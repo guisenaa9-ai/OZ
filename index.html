@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Oz | Moda Feminina</title>
+<meta name="description" content="Use Oz: moda feminina em Manaus. Vestidos, macacões e saias com entrega e pagamento online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--rosa:#f6d3df;--rosa-claro:#fdf1f5;--rosa-forte:#b8346a;--texto:#2b1d23;--cinza:#6f5d64;--branco:#fff;--borda:#ecd6de}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--texto);background:var(--branco);line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,.logo{font-family:"Playfair Display",Georgia,serif;font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-size:1.5rem;letter-spacing:.12em;text-decoration:none}
+nav{display:flex;gap:24px;font-size:.95rem}
+nav a{text-decoration:none;color:var(--cinza)}nav a:hover{color:var(--rosa-forte)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 24px;font:600 .95rem Inter,sans-serif;cursor:pointer;text-decoration:none;background:var(--rosa-forte);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+.btn.claro{background:var(--branco);color:var(--rosa-forte);border:1px solid var(--rosa-forte)}
+.carrinho-btn{position:relative;background:none;border:0;cursor:pointer;font:500 .95rem Inter;color:var(--texto);display:flex;gap:6px;align-items:center}
+.carrinho-btn span{background:var(--rosa-forte);color:#fff;border-radius:999px;font-size:.75rem;min-width:20px;height:20px;display:inline-grid;place-items:center;padding:0 6px}
+.hero{background:linear-gradient(160deg,var(--rosa-claro),var(--rosa));padding:72px 0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero small{text-transform:uppercase;letter-spacing:.2em;color:var(--rosa-forte);font-weight:600;font-size:.8rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin:12px 0 16px}
+.hero h1 em{font-style:italic;color:var(--rosa-forte)}
+.hero p{color:var(--cinza);max-width:440px;margin-bottom:28px;font-size:1.05rem}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.hero-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero-fotos img{border-radius:16px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.hero-fotos img:nth-child(2){margin-top:40px}
+section{padding:72px 0}
+.titulo{text-align:center;margin-bottom:40px}
+.titulo h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.titulo p{color:var(--cinza)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px}
+.produto{display:flex;flex-direction:column;gap:10px}
+.produto img{border-radius:12px;aspect-ratio:3/4;object-fit:cover;width:100%;background:var(--rosa-claro)}
+.produto h3{font-size:1rem;font-weight:500}
+.produto .preco{font-weight:600;color:var(--rosa-forte)}
+.produto .linha{display:flex;gap:8px}
+.produto select{flex:0 0 72px;border:1px solid var(--borda);border-radius:999px;padding:0 10px;font:inherit;background:#fff}
+.produto .btn{flex:1;padding:10px 16px}
+.frase{background:var(--rosa);text-align:center}
+.frase blockquote{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.3rem,3vw,2rem);max-width:760px;margin:0 auto;line-height:1.35}
+.frase cite{display:block;margin-top:16px;font-style:normal;color:var(--rosa-forte);font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{border:1px solid var(--borda);border-radius:16px;padding:28px;background:var(--rosa-claro)}
+.card h3{font-family:"Playfair Display",serif;font-size:1.3rem;margin-bottom:8px}
+.card p{color:var(--cinza);margin-bottom:16px}
+footer{border-top:1px solid var(--borda);padding:32px 0;color:var(--cinza);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{margin-left:16px}
+/* carrinho */
+.fundo{position:fixed;inset:0;background:rgba(43,29,35,.4);opacity:0;pointer-events:none;transition:.2s;z-index:20}
+.gaveta{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:21;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}
+body.aberto .fundo{opacity:1;pointer-events:auto}body.aberto .gaveta{transform:none}
+.gaveta header{position:static;display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:64px}
+.gaveta header h2{font-size:1.3rem}
+.fechar{background:none;border:0;font-size:1.6rem;cursor:pointer;line-height:1}
+.itens{flex:1;overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.item img{width:64px;height:84px;object-fit:cover;border-radius:8px}
+.item small{color:var(--cinza)}
+.qtd{display:flex;align-items:center;gap:6px}
+.qtd button{width:28px;height:28px;border-radius:50%;border:1px solid var(--borda);background:#fff;cursor:pointer}
+.vazio{color:var(--cinza);text-align:center;margin-top:40px}
+.rodape-carrinho{border-top:1px solid var(--borda);padding:20px;display:flex;flex-direction:column;gap:10px}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.1rem}
+.aviso{font-size:.85rem;color:var(--cinza);text-align:center}
+@media (max-width:760px){
+  nav{display:none}
+  .hero{padding:40px 0}
+  .hero .wrap{grid-template-columns:1fr}
+  section{padding:48px 0}
+  .grade{grid-template-columns:repeat(2,1fr);gap:14px}
+  .produto .linha{flex-direction:column}
+  .produto select{flex:none;height:38px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="#" class="logo">USE OZ</a>
+    <nav><a href="#colecao">Coleção</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav>
+    <button class="carrinho-btn" id="abrir-carrinho" aria-label="Abrir carrinho">Sacola <span id="contador">0</span></button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <small>Moda feminina · Manaus, AM</small>
+        <h1>Divas usam <em>Oz.</em></h1>
+        <p>Vestidos, macacões e peças estampadas para você se sentir linda todos os dias, sem precisar de uma ocasião especial.</p>
+        <div class="acoes">
+          <a href="#colecao" class="btn">Ver coleção</a>
+          <a href="https://www.instagram.com/use.oz_" class="btn claro" target="_blank" rel="noopener">@use.oz_</a>
+        </div>
+      </div>
+      <div class="hero-fotos">
+        <img src="img/vestido-rosa-floral.jpg" alt="Vestido longo floral rosa">
+        <img src="img/macacao-azul.jpg" alt="Macacão pantalona estampa azulejo">
+      </div>
+    </div>
+  </div>
+
+  <section id="colecao">
+    <div class="wrap">
+      <div class="titulo"><h2>Coleção</h2><p>Peças disponíveis para pronta entrega</p></div>
+      <div class="grade" id="grade"></div>
+    </div>
+  </section>
+
+  <section class="frase" id="sobre">
+    <div class="wrap">
+      <blockquote>“Eu amo pensar que, em algum lugar, tem uma mulher usando uma peça da minha loja e se sentindo linda sem precisar de uma ocasião especial.”</blockquote>
+      <cite>Use Oz</cite>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap">
+      <div class="titulo"><h2>Fale com a gente</h2></div>
+      <div class="cards">
+        <div class="card"><h3>WhatsApp</h3><p>Tire dúvidas sobre tamanhos, prazos e entregas.</p><a class="btn" href="https://wa.me/5592984030605?text=Ol%C3%A1%20linda%2C%20amei%20as%20novidades%20e%20gostaria%20de%20fechar%20pedido.%20%F0%9F%92%95" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+        <div class="card"><h3>Grupo VIP 🐆</h3><p>Novidades e lançamentos antes de todo mundo.</p><a class="btn claro" href="https://chat.whatsapp.com/HIWg8Mg5Z0BID3vpeENOaS" target="_blank" rel="noopener">Entrar no grupo</a></div>
+        <div class="card"><h3>Redes</h3><p>Looks, provadores e bastidores todos os dias.</p><a class="btn claro" href="https://www.instagram.com/use.oz_" target="_blank" rel="noopener">Instagram</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Use Oz · Manaus, AM</span>
+    <span><a href="https://www.instagram.com/use.oz_" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@use.oz_" target="_blank" rel="noopener">TikTok</a></span>
+  </div>
+</footer>
+
+<div class="fundo" id="fundo"></div>
+<aside class="gaveta" aria-label="Sacola de compras">
+  <header><h2>Sua sacola</h2><button class="fechar" id="fechar" aria-label="Fechar">×</button></header>
+  <div class="itens" id="itens"></div>
+  <div class="rodape-carrinho">
+    <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+    <button class="btn" id="finalizar">Finalizar compra</button>
+    <p class="aviso" id="aviso">Pagamento seguro via Mercado Pago (Pix, cartão ou boleto)</p>
+  </div>
+</aside>
+
+<script>
+const WHATSAPP = '5592984030605';
+const TAMANHOS = ['P', 'M', 'G'];
+const brl = v => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+let produtos = [];
+let sacola = [];
+try { sacola = JSON.parse(localStorage.getItem('oz-sacola')) || []; } catch {}
+
+const $ = id => document.getElementById(id);
+const salvar = () => { try { localStorage.setItem('oz-sacola', JSON.stringify(sacola)); } catch {} };
+const abrir = v => document.body.classList.toggle('aberto', v);
+
+function renderGrade() {
+  $('grade').innerHTML = produtos.map(p => `
+    <article class="produto">
+      <img src="${p.img}" alt="${p.nome}" loading="lazy">
+      <h3>${p.nome}</h3>
+      <span class="preco">${brl(p.preco)}</span>
+      <div class="linha">
+        <select aria-label="Tamanho" id="tam-${p.id}">${TAMANHOS.map(t => `<option>${t}</option>`).join('')}</select>
+        <button class="btn" data-add="${p.id}">Adicionar</button>
+      </div>
+    </article>`).join('');
+}
+
+function renderSacola() {
+  const linhas = sacola.map(i => ({...i, p: produtos.find(p => p.id === i.id)})).filter(i => i.p);
+  $('contador').textContent = linhas.reduce((s, i) => s + i.qtd, 0);
+  $('total').textContent = brl(linhas.reduce((s, i) => s + i.qtd * i.p.preco, 0));
+  $('finalizar').disabled = !linhas.length;
+  $('itens').innerHTML = linhas.length ? linhas.map((i, n) => `
+    <div class="item">
+      <img src="${i.p.img}" alt="">
+      <div><div>${i.p.nome}</div><small>Tam. ${i.tam} · ${brl(i.p.preco)}</small></div>
+      <div class="qtd"><button data-mais="${n}" data-d="-1" aria-label="Diminuir">−</button>${i.qtd}<button data-mais="${n}" data-d="1" aria-label="Aumentar">+</button></div>
+    </div>`).join('') : '<p class="vazio">Sua sacola está vazia.</p>';
+}
+
+document.addEventListener('click', e => {
+  const add = e.target.dataset.add, mais = e.target.dataset.mais;
+  if (add) {
+    const tam = $('tam-' + add).value;
+    const i = sacola.find(i => i.id === add && i.tam === tam);
+    i ? i.qtd++ : sacola.push({id: add, tam, qtd: 1});
+    salvar(); renderSacola(); abrir(true);
+  } else if (mais !== undefined) {
+    sacola[mais].qtd += +e.target.dataset.d;
+    sacola = sacola.filter(i => i.qtd > 0);
+    salvar(); renderSacola();
+  }
+});
+$('abrir-carrinho').onclick = () => abrir(true);
+$('fechar').onclick = $('fundo').onclick = () => abrir(false);
+
+function pedidoWhatsApp() {
+  const linhas = sacola.map(i => { const p = produtos.find(p => p.id === i.id); return `• ${i.qtd}x ${p.nome} (tam. ${i.tam}) ${brl(p.preco * i.qtd)}`; });
+  const total = sacola.reduce((s, i) => s + i.qtd * produtos.find(p => p.id === i.id).preco, 0);
+  const msg = `Olá linda, quero fechar este pedido 💕\n\n${linhas.join('\n')}\n\nTotal: ${brl(total)}`;
+  location.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+}
+
+$('finalizar').onclick = async () => {
+  $('finalizar').disabled = true;
+  $('finalizar').textContent = 'Abrindo pagamento…';
+  try {
+    const r = await fetch('/api/checkout', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({itens: sacola})});
+    const {url} = await r.json();
+    if (!r.ok || !url) throw 0;
+    location.href = url;
+  } catch {
+    // Sem servidor de pagamento configurado: fecha o pedido pelo WhatsApp
+    pedidoWhatsApp();
+  } finally {
+    $('finalizar').disabled = false;
+    $('finalizar').textContent = 'Finalizar compra';
+  }
+};
+
+if (new URLSearchParams(location.search).get('pagamento') === 'aprovado') {
+  sacola = []; salvar();
+  alert('Pagamento aprovado! Obrigada pela compra 💕 Vamos te chamar no WhatsApp para combinar a entrega.');
+  history.replaceState(null, '', location.pathname);
+}
+
+fetch('products.json').then(r => r.json()).then(d => { produtos = d; renderGrade(); renderSacola(); });
+</script>
+</body>
+</html>
