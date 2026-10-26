@@ -3,6 +3,11 @@
 const produtos = require('../products.json');
 
 const TAMANHOS = ['P', 'M', 'G'];
+// Tipos de pagamento do Mercado Pago escondidos em cada botão
+const EXCLUIR = {
+  pix: ['credit_card', 'debit_card', 'prepaid_card', 'ticket', 'atm'],
+  cartao: ['bank_transfer', 'debit_card', 'prepaid_card', 'ticket', 'atm'],
+};
 
 function montarItens(itens) {
   if (!Array.isArray(itens) || !itens.length || itens.length > 50) throw new Error('sacola inválida');
@@ -18,6 +23,8 @@ module.exports = async (req, res) => {
   if (!process.env.MP_ACCESS_TOKEN) return res.status(503).json({erro: 'pagamento não configurado'});
   let items;
   try { items = montarItens(req.body && req.body.itens); } catch (e) { return res.status(400).json({erro: e.message}); }
+  const excluir = EXCLUIR[req.body.metodo];
+  if (!excluir) return res.status(400).json({erro: 'forma de pagamento inválida'});
 
   const site = `https://${req.headers.host}`;
   const r = await fetch('https://api.mercadopago.com/checkout/preferences', {
@@ -26,6 +33,7 @@ module.exports = async (req, res) => {
     body: JSON.stringify({
       items,
       shipments: {mode: 'not_specified'},
+      payment_methods: {excluded_payment_types: excluir.map(id => ({id}))},
       back_urls: {success: `${site}/?pagamento=aprovado`, pending: `${site}/?pagamento=pendente`, failure: `${site}/`},
       auto_return: 'approved',
       statement_descriptor: 'USE OZ',

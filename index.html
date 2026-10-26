@@ -82,6 +82,11 @@ body.aberto .fundo{opacity:1;pointer-events:auto}body.aberto .gaveta{transform:n
 .vazio{color:var(--cinza);text-align:center;margin-top:40px}
 .rodape-carrinho{border-top:1px solid var(--borda);padding:20px;display:flex;flex-direction:column;gap:10px}
 .total{display:flex;justify-content:space-between;font-weight:600;font-size:1.1rem}
+.pagar{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pagar .btn{padding:12px 10px}
+.pagar .btn:disabled,.link-zap:disabled{opacity:.5;cursor:default}
+.link-zap{background:none;border:0;color:var(--rosa-forte);font:500 .9rem Inter,sans-serif;text-decoration:underline;cursor:pointer}
+.aviso.erro{color:#b42318}
 .aviso{font-size:.85rem;color:var(--cinza);text-align:center}
 @media (max-width:760px){
   nav{display:none}
@@ -176,8 +181,12 @@ body.aberto .fundo{opacity:1;pointer-events:auto}body.aberto .gaveta{transform:n
   <div class="itens" id="itens"></div>
   <div class="rodape-carrinho">
     <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
-    <button class="btn" id="finalizar">Finalizar compra</button>
-    <p class="aviso" id="aviso">Pagamento seguro via Mercado Pago (Pix, cartão ou boleto)</p>
+    <div class="pagar">
+      <button class="btn" data-metodo="pix">Pagar com Pix</button>
+      <button class="btn" data-metodo="cartao">Cartão de crédito</button>
+    </div>
+    <p class="aviso" id="aviso">Pagamento seguro via Mercado Pago</p>
+    <button class="link-zap" id="pedido-zap">Prefere fechar pelo WhatsApp?</button>
   </div>
 </aside>
 

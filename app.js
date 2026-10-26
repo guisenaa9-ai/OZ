@@ -28,7 +28,7 @@ function renderSacola() {
   const linhas = sacola.map(i => ({...i, p: produtos.find(p => p.id === i.id)})).filter(i => i.p);
   $('contador').textContent = linhas.reduce((s, i) => s + i.qtd, 0);
   $('total').textContent = brl(linhas.reduce((s, i) => s + i.qtd * i.p.preco, 0));
-  $('finalizar').disabled = !linhas.length;
+  document.querySelectorAll('[data-metodo], #pedido-zap').forEach(b => b.disabled = !linhas.length);
   $('itens').innerHTML = linhas.length ? linhas.map((i, n) => `
     <div class="item">
       <img src="${i.p.img}" alt="">
@@ -60,22 +60,27 @@ function pedidoWhatsApp() {
   location.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 
-$('finalizar').onclick = async () => {
-  $('finalizar').disabled = true;
-  $('finalizar').textContent = 'Abrindo pagamento…';
+$('pedido-zap').onclick = pedidoWhatsApp;
+
+document.querySelectorAll('[data-metodo]').forEach(btn => btn.onclick = async () => {
+  const texto = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Abrindo…';
+  $('aviso').className = 'aviso';
+  $('aviso').textContent = 'Pagamento seguro via Mercado Pago';
   try {
-    const r = await fetch('/api/checkout', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({itens: sacola})});
+    const r = await fetch('/api/checkout', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({itens: sacola, metodo: btn.dataset.metodo})});
     const {url} = await r.json();
     if (!r.ok || !url) throw 0;
     location.href = url;
   } catch {
-    // Sem servidor de pagamento configurado: fecha o pedido pelo WhatsApp
-    pedidoWhatsApp();
+    $('aviso').className = 'aviso erro';
+    $('aviso').textContent = 'Não conseguimos abrir o pagamento agora. Tente de novo ou feche pelo WhatsApp.';
   } finally {
-    $('finalizar').disabled = false;
-    $('finalizar').textContent = 'Finalizar compra';
+    btn.disabled = false;
+    btn.textContent = texto;
   }
-};
+});
 
 if (new URLSearchParams(location.search).get('pagamento') === 'aprovado') {
   sacola = []; salvar();
