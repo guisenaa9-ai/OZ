@@ -1,13 +1,13 @@
 [
-  {"id":"vestido-rosa-floral","nome":"Vestido Longo Floral Rosa","preco":189.9,"img":"img/vestido-rosa-floral.jpg"},
-  {"id":"vestido-coral-degrade","nome":"Vestido Degradê Coral","preco":179.9,"img":"img/vestido-coral-degrade.jpg"},
-  {"id":"vestido-rosa-frente-unica","nome":"Vestido Frente Única Estampado","preco":199.9,"img":"img/vestido-rosa-frente-unica.jpg"},
-  {"id":"macacao-azul","nome":"Macacão Pantalona Azulejo","preco":209.9,"img":"img/macacao-azul.jpg"},
-  {"id":"vestido-azul-floral","nome":"Vestido Longo Floral Azul","preco":169.9,"img":"img/vestido-azul-floral.jpg"},
-  {"id":"vestido-amarelo-floral","nome":"Vestido Amarelo Tie-Dye Floral","preco":159.9,"img":"img/vestido-amarelo-floral.jpg"},
-  {"id":"vestido-preto-flor","nome":"Vestido Ombro Único Flor","preco":179.9,"img":"img/vestido-preto-flor.jpg"},
-  {"id":"vestido-preto-tomara","nome":"Vestido Longo Preto Tomara que Caia","preco":169.9,"img":"img/vestido-preto-tomara.jpg"},
-  {"id":"vestido-branco-vermelho","nome":"Vestido Longo Amarração nas Costas","preco":159.9,"img":"img/vestido-branco-vermelho.jpg"},
-  {"id":"vestido-insp","nome":"Vestido Frente Única Bordado","preco":219.9,"img":"img/vestido-insp.jpg"},
-  {"id":"saia-lese","nome":"Saia Lesê Lastex","preco":89.9,"img":"img/saia-lese.jpg"}
+  {"id":"vestido-rosa-floral","nome":"Vestido Longo Floral Rosa","preco":189.9,"img":"img/vestido-rosa-floral.jpg","cat":"vestidos"},
+  {"id":"vestido-coral-degrade","nome":"Vestido Degradê Coral","preco":179.9,"img":"img/vestido-coral-degrade.jpg","cat":"vestidos"},
+  {"id":"vestido-rosa-frente-unica","nome":"Vestido Frente Única Estampado","preco":199.9,"img":"img/vestido-rosa-frente-unica.jpg","cat":"vestidos"},
+  {"id":"macacao-azul","nome":"Macacão Pantalona Azulejo","preco":209.9,"img":"img/macacao-azul.jpg","cat":"macacoes"},
+  {"id":"vestido-azul-floral","nome":"Vestido Longo Floral Azul","preco":169.9,"img":"img/vestido-azul-floral.jpg","cat":"vestidos"},
+  {"id":"vestido-amarelo-floral","nome":"Vestido Amarelo Tie-Dye Floral","preco":159.9,"img":"img/vestido-amarelo-floral.jpg","cat":"vestidos"},
+  {"id":"vestido-preto-flor","nome":"Vestido Ombro Único Flor","preco":179.9,"img":"img/vestido-preto-flor.jpg","cat":"vestidos"},
+  {"id":"vestido-preto-tomara","nome":"Vestido Longo Preto Tomara que Caia","preco":169.9,"img":"img/vestido-preto-tomara.jpg","cat":"vestidos"},
+  {"id":"vestido-branco-vermelho","nome":"Vestido Longo Amarração nas Costas","preco":159.9,"img":"img/vestido-branco-vermelho.jpg","cat":"vestidos"},
+  {"id":"vestido-insp","nome":"Vestido Frente Única Bordado","preco":219.9,"img":"img/vestido-insp.jpg","cat":"vestidos"},
+  {"id":"saia-lese","nome":"Saia Lesê Lastex","preco":89.9,"img":"img/saia-lese.jpg","cat":"saias"}
 ]
