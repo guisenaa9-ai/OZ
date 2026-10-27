@@ -17,8 +17,9 @@ if (Date.now() > DEMO_ATE) {
   document.body.insertAdjacentHTML('afterbegin', `<div class="demo-faixa">Versão de demonstração · disponível até ${dataDemo} (${dias < 1 ? 'último dia' : dias === 1 ? 'falta 1 dia' : `faltam ${dias} dias`})</div>`);
 }
 
-// Na demonstração nenhum pagamento é cobrado
-document.querySelectorAll('[data-metodo]').forEach(btn => btn.onclick = () => {
-  $('aviso').className = 'aviso erro';
-  $('aviso').textContent = 'Versão de demonstração: o pagamento fica desativado.';
-});
+// Na demonstração o pedido é fechado só pelo WhatsApp (sem pagamento no site)
+document.body.classList.add('so-zap');
+const zap = $('pedido-zap');
+zap.className = 'btn zap-fechar';
+zap.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${document.querySelector('.zap svg').innerHTML}</svg>Fechar pedido pelo WhatsApp`;
+zap.insertAdjacentHTML('afterend', '<p class="zap-nota">Você combina o pagamento (Pix ou cartão em até 3x) e a entrega direto com a loja.</p>');

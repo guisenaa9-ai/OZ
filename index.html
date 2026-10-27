@@ -216,6 +216,11 @@ body.demo-encerrada{overflow:hidden}
 .demo-fim>div{max-width:440px;background:var(--branco);border-radius:24px;padding:40px 32px;box-shadow:var(--sombra-forte);display:grid;gap:12px}
 .demo-fim h2{font-size:1.8rem}
 .demo-fim p{color:var(--cinza)}
+body.so-zap .cliente,body.so-zap .pagar,body.so-zap .aviso{display:none!important}
+.zap-fechar{width:100%;background:#25d366;box-shadow:0 6px 18px rgba(37,211,102,.3);padding:15px 20px;font-size:1rem}
+.zap-fechar svg{width:20px;height:20px;fill:#fff}
+.zap-fechar:disabled{opacity:.5;cursor:default;transform:none;filter:none;box-shadow:none}
+.zap-nota{font-size:.82rem;color:var(--cinza);text-align:center}
 
 /* entrada suave */
 .revela{opacity:0;transform:translateY(16px);animation:revela .8s cubic-bezier(.2,.7,.2,1) forwards}
@@ -282,8 +287,8 @@ body.demo-encerrada{overflow:hidden}
 <body>
 <div class="faixa" aria-label="Benefícios">
   <div class="faixa-trilho">
-    <span>Pague no Pix</span><span>Até 3x no cartão de crédito</span><span>Pronta entrega em Manaus</span><span>Pagamento seguro Mercado Pago</span>
-    <span aria-hidden="true" class="so-mobile">Pague no Pix</span><span aria-hidden="true" class="so-mobile">Até 3x no cartão de crédito</span><span aria-hidden="true" class="so-mobile">Pronta entrega em Manaus</span><span aria-hidden="true" class="so-mobile">Pagamento seguro Mercado Pago</span>
+    <span>Pague no Pix</span><span>Até 3x no cartão de crédito</span><span>Pronta entrega em Manaus</span><span>Atendimento pelo WhatsApp</span>
+    <span aria-hidden="true" class="so-mobile">Pague no Pix</span><span aria-hidden="true" class="so-mobile">Até 3x no cartão de crédito</span><span aria-hidden="true" class="so-mobile">Pronta entrega em Manaus</span><span aria-hidden="true" class="so-mobile">Atendimento pelo WhatsApp</span>
   </div>
 </div>
 
@@ -337,7 +342,7 @@ body.demo-encerrada{overflow:hidden}
     <div class="wrap">
       <div class="caixa">
         <div class="beneficio"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span><div><strong>Pix na hora</strong><small>Aprovação imediata</small></div></div>
-        <div class="beneficio"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><strong>Até 3x no cartão</strong><small>Crédito via Mercado Pago</small></div></div>
+        <div class="beneficio"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><strong>Até 3x no cartão</strong><small>No cartão de crédito</small></div></div>
         <div class="beneficio"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><div><strong>Pronta entrega</strong><small>Em Manaus, AM</small></div></div>
         <div class="beneficio"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><div><strong>Atendimento</strong><small>Direto no WhatsApp</small></div></div>
       </div>
@@ -362,8 +367,8 @@ body.demo-encerrada{overflow:hidden}
       <div class="titulo"><span class="eyebrow">Simples assim</span><h2>Como comprar</h2></div>
       <div class="passos">
         <div class="passo"><h3>Escolha sua peça</h3><p>Selecione o tamanho P, M ou G e adicione à sacola.</p></div>
-        <div class="passo"><h3>Pague do seu jeito</h3><p>Pix na hora ou cartão de crédito em até 3x, com a segurança do Mercado Pago.</p></div>
-        <div class="passo"><h3>Receba em Manaus</h3><p>Chamamos você no WhatsApp para combinar a entrega.</p></div>
+        <div class="passo"><h3>Feche pelo WhatsApp</h3><p>Envie sua sacola com um toque e combine o pagamento: Pix ou cartão em até 3x.</p></div>
+        <div class="passo"><h3>Receba em Manaus</h3><p>Na mesma conversa a gente combina a entrega.</p></div>
       </div>
     </div>
   </section>
@@ -397,9 +402,8 @@ body.demo-encerrada{overflow:hidden}
       <div class="titulo"><span class="eyebrow">Ficou com alguma dúvida?</span><h2>Perguntas frequentes</h2></div>
       <div class="faq">
         <details><summary>Como escolho meu tamanho?</summary><p>As peças vêm nos tamanhos P, M e G. Na dúvida, chame a gente no WhatsApp que ajudamos você a escolher.</p></details>
-        <details><summary>Quais são as formas de pagamento?</summary><p>Pix ou cartão de crédito em até 3x, processados pelo Mercado Pago. Se preferir, também dá pra fechar o pedido pelo WhatsApp.</p></details>
-        <details><summary>Como funciona a entrega?</summary><p>As peças são de pronta entrega em Manaus. Depois do pagamento, chamamos você no WhatsApp informado na sacola para combinar a entrega.</p></details>
-        <details><summary>O pagamento é seguro?</summary><p>Sim. O pagamento é feito na página do Mercado Pago, e os dados do seu cartão não passam pelo nosso site.</p></details>
+        <details><summary>Quais são as formas de pagamento?</summary><p>Pix ou cartão de crédito em até 3x. Você monta a sacola, fecha o pedido pelo WhatsApp e combina o pagamento direto com a loja.</p></details>
+        <details><summary>Como funciona a entrega?</summary><p>As peças são de pronta entrega em Manaus. Depois de fechar o pedido pelo WhatsApp, combinamos a entrega na mesma conversa.</p></details>
       </div>
     </div>
   </section>
@@ -419,7 +423,7 @@ body.demo-encerrada{overflow:hidden}
 <footer>
   <div class="wrap">
     <div><span class="logo">USE OZ</span><br>© Use Oz · Manaus, AM</div>
-    <div class="pagamentos" aria-label="Formas de pagamento"><span>Pix</span><span>Cartão em até 3x</span><span>Mercado Pago</span></div>
+    <div class="pagamentos" aria-label="Formas de pagamento"><span>Pix</span><span>Cartão em até 3x</span><span>Pedido pelo WhatsApp</span></div>
     <span><a href="https://www.instagram.com/use.oz_" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@use.oz_" target="_blank" rel="noopener">TikTok</a></span>
   </div>
 </footer>
