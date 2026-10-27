@@ -9,6 +9,7 @@
 <meta property="og:description" content="Vestidos, macacões e saias de pronta entrega em Manaus. Pix ou até 3x no cartão.">
 <meta property="og:image" content="img/vestido-rosa-floral.jpg">
 <meta name="theme-color" content="#b8346a">
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -207,6 +208,14 @@ body.aberto .fundo{opacity:1;pointer-events:auto}body.aberto .gaveta{transform:n
 .link-zap{background:none;border:0;color:var(--rosa-forte);font:500 .9rem Inter,sans-serif;text-decoration:underline;cursor:pointer}
 .aviso{font-size:.82rem;color:var(--cinza);text-align:center;display:flex;gap:6px;justify-content:center;align-items:center}
 .aviso.erro{color:#b42318}
+
+/* demonstração */
+.demo-faixa{background:var(--rosa-forte);color:#fff;text-align:center;font-size:.82rem;font-weight:500;padding:8px 16px}
+body.demo-encerrada{overflow:hidden}
+.demo-fim{position:fixed;inset:0;z-index:100;background:linear-gradient(160deg,var(--rosa-claro),var(--rosa));display:grid;place-items:center;padding:24px;text-align:center}
+.demo-fim>div{max-width:440px;background:var(--branco);border-radius:24px;padding:40px 32px;box-shadow:var(--sombra-forte);display:grid;gap:12px}
+.demo-fim h2{font-size:1.8rem}
+.demo-fim p{color:var(--cinza)}
 
 /* entrada suave */
 .revela{opacity:0;transform:translateY(16px);animation:revela .8s cubic-bezier(.2,.7,.2,1) forwards}
@@ -436,6 +445,7 @@ body.aberto .fundo{opacity:1;pointer-events:auto}body.aberto .gaveta{transform:n
 </aside>
 
 <script src="app.js"></script>
+<script src="demo.js"></script>
 
 </body>
 </html>

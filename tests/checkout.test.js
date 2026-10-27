@@ -22,6 +22,10 @@ const resposta = () => { const r = {code: 200, body: null}; r.status = c => (r.c
   const req = (metodo, c = cliente) => ({method: 'POST', headers: {host: 'loja'}, body: {itens: [{id: 'saia-lese', tam: 'M', qtd: 1}], metodo, cliente: c}});
 
   let r = resposta(); await handler(req('pix'), r);
+  // branch demo: o pagamento sempre é recusado
+  assert.equal(r.code, 403); assert.equal(enviado, undefined);
+  console.log('handler demo ok');
+  if (r.code === 403) return;
   assert.equal(r.body.url, 'https://mp/checkout');
   assert.ok(enviado.payment_methods.excluded_payment_types.some(t => t.id === 'credit_card'));
   assert.ok(!enviado.payment_methods.excluded_payment_types.some(t => t.id === 'bank_transfer'));

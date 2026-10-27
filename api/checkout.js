@@ -28,6 +28,8 @@ function montarCliente(c) {
 }
 
 module.exports = async (req, res) => {
+  // branch demo: versão de demonstração nunca cobra
+  return res.status(403).json({erro: 'pagamento desativado na demonstração'});
   if (req.method !== 'POST') return res.status(405).json({erro: 'método não permitido'});
   if (!process.env.MP_ACCESS_TOKEN) return res.status(503).json({erro: 'pagamento não configurado'});
   const body = req.body || {};
